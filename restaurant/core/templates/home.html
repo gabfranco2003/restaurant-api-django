@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to Our Restaurant!</h1>
+<section>
+    {% if item_of_the_day %}
+    <h1>Daily Special:</h1>
+    <h2>{{ item_of_the_day.name }}</h2>
+    <p>{{ item_of_the_day.description }}</p>
+    <p>Price: ${{ item_of_the_day.price }}</p>
+    
+    <!-- Display item image if available -->
+    {% if item_of_the_day.image %}
+        <img src="{{ item_of_the_day.image.url }}" alt="{{ item_of_the_day.name }}" />
+    {% else %}
+        <p>No image available for this item.</p>
+    {% endif %}
+    
+    {% else %}
+    <p>No item of the day set.</p>
+    {% endif %}
+</section>
+{% endblock %}
+
